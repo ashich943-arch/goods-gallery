@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop All – Goods Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script src="header.js"></script>
+<script>injectHeader('products');</script>
+
+<section class="page-hero">
+  <h1>All Products</h1>
+  <p>Top Electronics – Next Day Delivery</p>
+</section>
+
+<section class="shop-section">
+  <aside class="filters">
+    <h3>Categories</h3>
+    <div class="filter-group" id="category-filters"></div>
+    <h3 style="margin-top:2rem">Price Range</h3>
+    <div class="price-range">
+      <input type="range" min="500" max="75000" value="75000" id="price-range" oninput="filterProducts()"/>
+      <div class="price-labels"><span>Rs. 500</span><span id="price-max-label">Rs. 75,000</span></div>
+    </div>
+    <h3 style="margin-top:2rem">Sort By</h3>
+    <select id="sort-select" onchange="filterProducts()">
+      <option value="default">Default</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="name-asc">Name: A–Z</option>
+    </select>
+  </aside>
+  <div class="products-area">
+    <div class="results-count" id="results-count">Showing all products</div>
+    <div class="products-grid" id="products-grid"></div>
+  </div>
+</section>
+
+<script src="footer.js"></script>
+<script>injectFooter();</script>
+<script src="products.js"></script>
+<a href="https://wa.me/923076844382" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">💬</a>
+<script src="chatbot.js"></script>
+</body>
+</html>

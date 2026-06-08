@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Goods Gallery – Latest Gadgets & Electronics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script src="header.js"></script>
+<script>injectHeader('home');</script>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-tag">New Arrivals 2025</p>
+    <h1>Stay Ahead With<br/><span>Latest Gadgets</span></h1>
+    <p class="hero-sub">Discover the newest gadgets and innovative gizmos that keep you ahead.</p>
+    <div class="hero-btns">
+      <a href="products.html" class="btn-primary">Shop Now →</a>
+      <a href="products.html" class="btn-secondary">See More →</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-glow"></div>
+    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80" alt="Headphones"/>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="collections">
+  <div class="section-header">
+    <div><h2>Collection</h2><p>Top 10 Most Sold This Week, Next Day Delivery</p></div>
+    <a href="products.html" class="view-all">View all collections →</a>
+  </div>
+  <div class="collection-grid">
+    <a href="products.html?cat=earbuds" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=120&q=80" alt="Earbuds"/>
+      <div><strong>Earbuds</strong><span>3 items</span></div>
+    </a>
+    <a href="products.html?cat=hard" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1531492898516-8f3b0a5e8aa0?w=120&q=80" alt="Hard Devices"/>
+      <div><strong>Hard Devices</strong><span>3 items</span></div>
+    </a>
+    <a href="products.html?cat=keyboard" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=120&q=80" alt="Keyboard"/>
+      <div><strong>Keyboard</strong><span>1 item</span></div>
+    </a>
+    <a href="products.html?cat=mobile" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=120&q=80" alt="Mobile"/>
+      <div><strong>Mobile</strong><span>3 items</span></div>
+    </a>
+    <a href="products.html?cat=printer" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=120&q=80" alt="Printer"/>
+      <div><strong>Printer</strong><span>1 item</span></div>
+    </a>
+    <a href="products.html?cat=earphone" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=120&q=80" alt="Earphone"/>
+      <div><strong>Earphone</strong><span>1 item</span></div>
+    </a>
+    <a href="products.html?cat=headphone" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=120&q=80" alt="Headphones"/>
+      <div><strong>Headphones</strong><span>1 item</span></div>
+    </a>
+    <a href="products.html?cat=laptop" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=120&q=80" alt="Laptop"/>
+      <div><strong>Laptop</strong><span>2 items</span></div>
+    </a>
+    <a href="products.html?cat=pendrive" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?w=120&q=80" alt="Pen Drive"/>
+      <div><strong>Pen Drive</strong><span>1 item</span></div>
+    </a>
+    <a href="products.html?cat=tablet" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=120&q=80" alt="Tablet"/>
+      <div><strong>Tablet</strong><span>1 item</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- DEAL TICKER -->
+<div class="deal-ticker">
+  <div class="deal-scroll">
+    <span>⚡ Jackpot Deals | Tap to get Flat 50% Off!</span>
+    <span>⚡ Jackpot Deals | Tap to get Flat 50% Off!</span>
+    <span>⚡ Jackpot Deals | Tap to get Flat 50% Off!</span>
+    <span>⚡ Jackpot Deals | Tap to get Flat 50% Off!</span>
+  </div>
+</div>
+
+<!-- FEATURED -->
+<section class="featured">
+  <div class="section-header">
+    <div><h2>Featured Collection</h2><p>Top 10 Most Sold This Week, Next Day Delivery</p></div>
+    <a href="products.html" class="view-all">View all →</a>
+  </div>
+  <div class="products-grid" id="featured-products"></div>
+</section>
+
+<!-- DEAL OF THE DAY -->
+<section class="deal-of-day">
+  <div class="deal-of-day-inner">
+    <div class="deal-left">
+      <h2>Deal Of The Days</h2>
+      <p>Unbelievable Savings Await!</p>
+      <div class="countdown">
+        <div class="count-box"><span id="days">00</span><label>Days</label></div>
+        <div class="count-sep">:</div>
+        <div class="count-box"><span id="hours">00</span><label>Hours</label></div>
+        <div class="count-sep">:</div>
+        <div class="count-box"><span id="minutes">00</span><label>Mins</label></div>
+        <div class="count-sep">:</div>
+        <div class="count-box"><span id="seconds">00</span><label>Sec</label></div>
+      </div>
+    </div>
+    <div class="deal-products" id="deal-products"></div>
+  </div>
+</section>
+
+<!-- PROMO BANNERS -->
+<section class="promo-banners">
+  <div class="promo-card dark">
+    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&q=80" alt="Smartphone"/>
+    <div class="promo-content">
+      <span class="promo-tag">Smartphone</span>
+      <h3>Smartphones Innovation</h3>
+      <p>Next-Gen Technology</p>
+      <a href="products.html?cat=mobile" class="btn-primary">Shop Now</a>
+    </div>
+  </div>
+  <div class="promo-card blue">
+    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&q=80" alt="Earbuds"/>
+    <div class="promo-content">
+      <span class="promo-tag">Earbuds</span>
+      <h3>Audio Freedom</h3>
+      <p>Sound Meets Innovation</p>
+      <a href="products.html?cat=earbuds" class="btn-primary">Shop Now</a>
+    </div>
+  </div>
+  <div class="promo-card navy">
+    <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=300&q=80" alt="Tablet"/>
+    <div class="promo-content">
+      <span class="promo-tag">Tablets</span>
+      <h3>Power Of Portable Tablets</h3>
+      <p>Performance On-The-Go</p>
+      <a href="products.html?cat=tablet" class="btn-primary">Shop Now</a>
+    </div>
+  </div>
+</section>
+
+<script src="footer.js"></script>
+<script>injectFooter();</script>
+<script src="main.js"></script>
+<a href="https://wa.me/923076844382" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">💬</a>
+<script src="chatbot.js"></script>
+</body>
+</html>

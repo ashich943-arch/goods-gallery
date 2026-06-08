@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us – Goods Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script src="header.js"></script>
+<script>injectHeader('contact');</script>
+
+<section class="page-hero">
+  <h1>Contact Us</h1>
+  <p>We're here to help — reach out anytime</p>
+</section>
+
+<div class="info-page">
+  <div class="contact-grid">
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <h2>Get In Touch</h2>
+      <p style="color:var(--text-muted);margin-bottom:2rem;">We respond within 1 hour during business hours. For urgent queries, WhatsApp us directly.</p>
+
+      <div class="contact-item">
+        <span class="contact-icon">📞</span>
+        <div>
+          <strong>Phone / WhatsApp</strong>
+          <p>+92 307 684 4382</p>
+          <a href="https://wa.me/923076844382" target="_blank" class="whatsapp-btn" style="margin-top:0.5rem;display:inline-block;">💬 Chat on WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-icon">📧</span>
+        <div>
+          <strong>Email</strong>
+          <p>support@goodsgallery.co.uk</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-icon">📍</span>
+        <div>
+          <strong>Address</strong>
+          <p>Shop No. 12, Electronics Market,<br/>Saddar, Karachi, Pakistan</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-icon">🕐</span>
+        <div>
+          <strong>Business Hours</strong>
+          <p>Monday – Saturday: 9 AM – 9 PM<br/>Sunday: 11 AM – 6 PM</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form-wrap">
+      <h2>Send Us a Message</h2>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Enter your name" id="f-name"/>
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="+92 3XX XXXXXXX" id="f-phone"/>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com" id="f-email"/>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select id="f-subject">
+            <option value="">Select a topic</option>
+            <option>Order Inquiry</option>
+            <option>Product Question</option>
+            <option>Return / Refund</option>
+            <option>Shipping Issue</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Write your message here..." id="f-msg" rows="5"></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;padding:1rem;font-size:1rem;" onclick="submitForm()">Send Message →</button>
+        <div id="form-success" style="display:none;text-align:center;color:#22c55e;margin-top:1rem;font-weight:600;">✅ Message sent! We'll get back to you soon.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="footer.js"></script>
+<script>injectFooter();</script>
+<script>
+function submitForm() {
+  const name = document.getElementById('f-name').value.trim();
+  const msg = document.getElementById('f-msg').value.trim();
+  if (!name || !msg) { alert('Please fill in your name and message.'); return; }
+  document.getElementById('form-success').style.display = 'block';
+  document.querySelector('.contact-form button').disabled = true;
+}
+</script>
+<a href="https://wa.me/923076844382" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">💬</a>
+<script src="chatbot.js"></script>
+</body>
+</html>
