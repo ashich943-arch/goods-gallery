@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Electronics – Goods Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script src="header.js"></script>
+<script>injectHeader('electronics');</script>
+
+<section class="page-hero">
+  <h1>Electronics</h1>
+  <p>Latest gadgets & tech — all in one place</p>
+</section>
+
+<!-- CATEGORY TABS -->
+<div class="cat-tabs-wrap">
+  <div class="cat-tabs" id="cat-tabs">
+    <button class="cat-tab active" onclick="filterCat('all', this)">All Electronics</button>
+    <button class="cat-tab" onclick="filterCat('mobile', this)">📱 Mobiles</button>
+    <button class="cat-tab" onclick="filterCat('laptop', this)">💻 Laptops</button>
+    <button class="cat-tab" onclick="filterCat('tablet', this)">📱 Tablets</button>
+    <button class="cat-tab" onclick="filterCat('headphone', this)">🎧 Headphones</button>
+    <button class="cat-tab" onclick="filterCat('earbuds', this)">🎵 Earbuds</button>
+    <button class="cat-tab" onclick="filterCat('earphone', this)">🎙️ Earphones</button>
+    <button class="cat-tab" onclick="filterCat('keyboard', this)">⌨️ Keyboards</button>
+    <button class="cat-tab" onclick="filterCat('hard', this)">🔌 Accessories</button>
+    <button class="cat-tab" onclick="filterCat('printer', this)">🖨️ Printers</button>
+    <button class="cat-tab" onclick="filterCat('pendrive', this)">💾 Storage</button>
+  </div>
+</div>
+
+<section class="shop-section" style="max-width:1280px;margin:2rem auto 4rem;padding:0 2rem;">
+  <div style="width:100%">
+    <div class="results-count" id="results-count">Showing all products</div>
+    <div class="products-grid" id="products-grid" style="max-width:100%;padding:0;"></div>
+  </div>
+</section>
+
+<a href="https://wa.me/923076844382" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">💬</a>
+<script src="footer.js"></script>
+<script>injectFooter();</script>
+<script src="chatbot.js"></script>
+<script>
+let currentCat = 'all';
+
+function filterCat(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts();
+}
+
+function renderProducts() {
+  const filtered = currentCat === 'all'
+    ? PRODUCTS
+    : PRODUCTS.filter(p => p.category === currentCat);
+
+  const grid = document.getElementById('products-grid');
+  const count = document.getElementById('results-count');
+  count.textContent = `Showing ${filtered.length} product${filtered.length !== 1 ? 's' : ''}`;
+  grid.innerHTML = filtered.length
+    ? filtered.map(buildCard).join('')
+    : '<div class="no-results">😔 No products in this category.</div>';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get('cat');
+  if (cat) {
+    currentCat = cat;
+    document.querySelectorAll('.cat-tab').forEach(b => {
+      if (b.getAttribute('onclick').includes(`'${cat}'`)) {
+        b.classList.add('active');
+      } else {
+        b.classList.remove('active');
+      }
+    });
+  }
+  renderProducts();
+});
+</script>
+</body>
+</html>

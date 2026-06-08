@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Offers & Deals – Goods Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script src="header.js"></script>
+<script>injectHeader('offers');</script>
+
+<!-- HERO -->
+<section class="page-hero offers-hero">
+  <div class="offers-hero-content">
+    <p class="hero-tag">🔥 Limited Time</p>
+    <h1>Deals & Offers</h1>
+    <p>Massive discounts on top electronics — grab them before they're gone!</p>
+  </div>
+  <!-- Countdown -->
+  <div class="offers-countdown">
+    <p>Deals end in:</p>
+    <div class="countdown">
+      <div class="count-box"><span id="days">00</span><label>Days</label></div>
+      <div class="count-sep">:</div>
+      <div class="count-box"><span id="hours">00</span><label>Hours</label></div>
+      <div class="count-sep">:</div>
+      <div class="count-box"><span id="minutes">00</span><label>Mins</label></div>
+      <div class="count-sep">:</div>
+      <div class="count-box"><span id="seconds">00</span><label>Sec</label></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEAL TICKER -->
+<div class="deal-ticker">
+  <div class="deal-scroll">
+    <span>⚡ Free Shipping on orders over £50!</span>
+    <span>🔥 Up to £150 off on selected items!</span>
+    <span>⚡ Free Shipping on orders over £50!</span>
+    <span>🔥 Up to £150 off on selected items!</span>
+  </div>
+</div>
+
+<!-- TOP DEALS BANNER -->
+<div class="top-deals-banner">
+  <div class="deal-highlight-card">
+    <span class="deal-tag">Best Seller</span>
+    <h3>Pro Noise Cancelling Headphones</h3>
+    <div class="deal-price"><span class="price-new">£69.99</span><span class="price-old">£89.99</span></div>
+    <p>Save £20 — Active Noise Cancel, 30hr Battery</p>
+    <a href="detail.html?id=6" class="btn-primary">View Deal →</a>
+  </div>
+  <div class="deal-highlight-card featured-deal">
+    <span class="deal-tag hot">🔥 Hot Deal</span>
+    <h3>UltraBook Pro 14" Laptop</h3>
+    <div class="deal-price"><span class="price-new">£649.99</span><span class="price-old">£799.99</span></div>
+    <p>Save £150 — Intel i7, 16GB RAM, 512GB SSD</p>
+    <a href="detail.html?id=7" class="btn-primary">View Deal →</a>
+  </div>
+  <div class="deal-highlight-card">
+    <span class="deal-tag">Top Rated</span>
+    <h3>ProMax 5G Smartphone</h3>
+    <div class="deal-price"><span class="price-new">£549.99</span><span class="price-old">£649.99</span></div>
+    <p>Save £100 — 200MP Camera, Snapdragon 8 Gen 3</p>
+    <a href="detail.html?id=10" class="btn-primary">View Deal →</a>
+  </div>
+</div>
+
+<!-- SORT BAR -->
+<div class="offers-toolbar">
+  <div style="max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+    <div class="results-count" id="results-count">Showing all deals</div>
+    <select id="sort-select" onchange="sortOffers()" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:0.5rem 1rem;border-radius:8px;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer;">
+      <option value="saving-desc">Biggest Saving First</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="discount-pct">Highest % Off</option>
+    </select>
+  </div>
+</div>
+
+<!-- ALL DEALS GRID -->
+<section style="max-width:1280px;margin:1.5rem auto 4rem;padding:0 2rem;">
+  <div class="products-grid" id="offers-grid" style="max-width:100%;padding:0;"></div>
+</section>
+
+<a href="https://wa.me/923076844382" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">💬</a>
+<script src="footer.js"></script>
+<script>injectFooter();</script>
+<script src="chatbot.js"></script>
+<script>
+function sortOffers() {
+  const sort = document.getElementById('sort-select').value;
+  let products = [...PRODUCTS];
+
+  if (sort === 'saving-desc') products.sort((a,b) => (b.oldPrice - b.price) - (a.oldPrice - a.price));
+  else if (sort === 'price-asc') products.sort((a,b) => a.price - b.price);
+  else if (sort === 'price-desc') products.sort((a,b) => b.price - a.price);
+  else if (sort === 'discount-pct') products.sort((a,b) => {
+    const pctA = (a.oldPrice - a.price) / a.oldPrice;
+    const pctB = (b.oldPrice - b.price) / b.oldPrice;
+    return pctB - pctA;
+  });
+
+  renderOffers(products);
+}
+
+function renderOffers(products) {
+  const grid = document.getElementById('offers-grid');
+  const count = document.getElementById('results-count');
+  count.textContent = `Showing ${products.length} deals`;
+
+  grid.innerHTML = products.map(p => {
+    const saving = (p.oldPrice - p.price).toFixed(2);
+    const pct = Math.round((p.oldPrice - p.price) / p.oldPrice * 100);
+    const isNew = p.badge === "New";
+    return `
+      <div class="product-card" data-id="${p.id}">
+        <span class="badge">${isNew ? 'New' : `${pct}% OFF`}</span>
+        ${!isNew ? `<span class="saving-tag">Save £${saving}</span>` : ''}
+        <a href="detail.html?id=${p.id}">
+          <div class="card-img-wrap">
+            <img src="${p.image}" alt="${p.name}" loading="lazy"/>
+            <div class="quick-look">Quick Look</div>
+          </div>
+        </a>
+        <div class="card-body">
+          <p class="card-brand">${p.brand}</p>
+          <a href="detail.html?id=${p.id}"><h3 class="card-name">${p.name}</h3></a>
+          <div class="card-prices">
+            <span class="price-new">${formatPrice(p.price)}</span>
+            <span class="price-old">${formatPrice(p.oldPrice)}</span>
+          </div>
+          ${p.colors ? `<div class="color-dots">${p.colors.map(c=>`<span class="dot" style="background:${c}"></span>`).join('')}</div>` : ''}
+          <button class="btn-add-cart" onclick="addToCart(${p.id})">🛒 Add to Cart</button>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// Countdown
+function startCountdown() {
+  const end = new Date();
+  end.setDate(end.getDate() + 3);
+  end.setHours(end.getHours() + 5);
+  function tick() {
+    const diff = end - new Date();
+    if (diff <= 0) return;
+    document.getElementById('days').textContent    = String(Math.floor(diff/86400000)).padStart(2,'0');
+    document.getElementById('hours').textContent   = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  sortOffers();
+  startCountdown();
+});
+</script>
+</body>
+</html>

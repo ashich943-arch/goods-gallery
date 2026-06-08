@@ -27,8 +27,8 @@ function injectHeader(activePage) {
     </div>
     <nav class="nav">
       <a href="products.html" class="${activePage==='products'?'active':''}">Shop All</a>
-      <a href="products.html" class="${activePage==='products'?'active':''}">Electronics</a>
-      <a href="products.html" class="${activePage==='products'?'active':''}">Offers</a>
+      <a href="electronics.html" class="${activePage==='electronics'?'active':''}">Electronics</a>
+      <a href="offers.html" class="${activePage==='offers'?'active':''}">Offers</a>
       <a href="contact.html" class="${activePage==='contact'?'active':''}">Contact</a>
       <span class="nav-divider">|</span>
       <a href="products.html">All Collections</a>
@@ -47,7 +47,7 @@ function injectHeader(activePage) {
       <div class="cart-empty">Your cart is empty</div>
     </div>
     <div class="cart-footer" id="cart-footer" style="display:none">
-      <div class="cart-total">Total: <span id="cart-total">Rs. 0</span></div>
+      <div class="cart-total">Total: <span id="cart-total">£0.00</span></div>
       <button class="btn-checkout">Proceed to Checkout</button>
       <button class="btn-clear" onclick="clearCart()">Clear Cart</button>
     </div>

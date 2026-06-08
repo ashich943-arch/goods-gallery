@@ -36,9 +36,9 @@ function setCat(cat) {
 
 function filterProducts() {
   const search = (document.getElementById("global-search")?.value||"").toLowerCase();
-  const maxPrice = parseInt(document.getElementById("price-range")?.value||75000);
+  const maxPrice = parseFloat(document.getElementById("price-range")?.value||800);
   const sort = document.getElementById("sort-select")?.value||"default";
-  document.getElementById("price-max-label").textContent = "Rs. "+maxPrice.toLocaleString("en-IN");
+  document.getElementById("price-max-label").textContent = "£"+parseFloat(maxPrice).toFixed(2);
 
   let filtered = PRODUCTS.filter(p => {
     const matchCat = activeCategory==="all"||p.category===activeCategory;

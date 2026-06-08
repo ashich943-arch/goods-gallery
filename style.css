@@ -1419,3 +1419,220 @@ section { padding: 4rem 0; }
   .chatbot-box { bottom: 84px; right: 12px; width: calc(100vw - 24px); }
   .chatbot-bubble { bottom: 16px; right: 16px; }
 }
+
+/* ===== CATEGORY TABS (Electronics page) ===== */
+.cat-tabs-wrap {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cat-tabs-wrap::-webkit-scrollbar { display: none; }
+.cat-tabs {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+.cat-tab {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 1rem 1.2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.cat-tab:hover { color: var(--text); }
+.cat-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ===== OFFERS PAGE ===== */
+.offers-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  text-align: left;
+  padding: 3rem 4rem;
+}
+.offers-hero-content h1 { font-size: 2.5rem; }
+.offers-countdown p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem; }
+
+.top-deals-banner {
+  max-width: 1280px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.deal-highlight-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  position: relative;
+  transition: all 0.2s;
+}
+.deal-highlight-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.featured-deal {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-color: rgba(245,197,24,0.3);
+}
+.deal-tag {
+  display: inline-block;
+  background: rgba(245,197,24,0.15);
+  color: var(--accent);
+  border: 1px solid rgba(245,197,24,0.3);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.8rem;
+}
+.deal-tag.hot { background: rgba(239,68,68,0.15); color: #ef4444; border-color: rgba(239,68,68,0.3); }
+.deal-highlight-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.8rem; line-height: 1.3; }
+.deal-highlight-card p { color: var(--text-muted); font-size: 0.85rem; margin: 0.5rem 0 1rem; }
+.deal-price { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; }
+.deal-price .price-new { font-size: 1.3rem; }
+
+.saving-tag {
+  position: absolute;
+  top: 10px; right: 10px;
+  background: #22c55e;
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 50px;
+  z-index: 3;
+}
+
+.offers-toolbar {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  margin-bottom: 0.5rem;
+}
+
+@media(max-width:900px) {
+  .offers-hero { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+  .top-deals-banner { grid-template-columns: 1fr; }
+}
+@media(max-width:640px) {
+  .cat-tabs { padding: 0 1rem; }
+  .offers-hero { padding: 2rem 1rem; }
+  .top-deals-banner { padding: 0 1rem; }
+}
+
+/* ===== MOBILE FIXES FOR ALL NEW PAGES ===== */
+
+/* Offers hero mobile */
+@media(max-width:768px) {
+  .offers-hero { flex-direction:column; text-align:center; padding:2rem 1.5rem; }
+  .offers-hero h1 { font-size:2rem; }
+  .top-deals-banner { grid-template-columns:1fr; padding:0 1rem; }
+  .offers-toolbar { padding:0.8rem 0; }
+}
+
+/* Category tabs scroll on mobile */
+@media(max-width:640px) {
+  .cat-tabs { gap:0.3rem; padding:0 0.8rem; }
+  .cat-tab { padding:0.8rem 0.9rem; font-size:0.8rem; }
+  .offers-hero { padding:1.5rem 1rem; }
+  .top-deals-banner { gap:1rem; }
+  .deal-highlight-card { padding:1.2rem; }
+  .deal-highlight-card h3 { font-size:1rem; }
+
+  /* Fix products grid inside shop-section on mobile */
+  .shop-section { padding:0 1rem; }
+
+  /* Fix info page cards on mobile */
+  .info-card { padding:1.3rem; }
+  .contact-grid { grid-template-columns:1fr; }
+
+  /* Fix footer on very small screens */
+  .footer { padding:2rem 1rem 1rem; }
+  .footer-grid { grid-template-columns:1fr; gap:1.5rem; }
+
+  /* Fix hero section */
+  .hero { padding:2.5rem 1rem 2rem; }
+  .hero h1 { font-size:2rem; }
+
+  /* Fix collection grid */
+  .collection-grid { padding:0 1rem; gap:0.6rem; }
+  .collection-card { padding:0.7rem; gap:0.6rem; }
+  .collection-card img { width:36px; height:36px; }
+
+  /* Fix section headers */
+  .section-header { padding:0 1rem; flex-direction:column; align-items:flex-start; gap:0.5rem; }
+
+  /* Fix promo banners */
+  .promo-banners { padding:0 1rem 2rem; }
+  .promo-card { min-height:220px; padding:1.5rem; }
+  .promo-card h3 { font-size:1.1rem; }
+  .promo-content { max-width:70%; }
+
+  /* Fix deal of day */
+  .deal-of-day { padding:2rem 1rem; }
+  .deal-products { grid-template-columns:1fr; }
+  .deal-product-card { padding:0.8rem; }
+
+  /* Fix chatbot on mobile */
+  .chatbot-box { width:calc(100vw - 20px); right:10px; bottom:80px; }
+  .chatbot-bubble { bottom:16px; right:16px; width:52px; height:52px; }
+  .whatsapp-float { bottom:78px; right:16px; width:46px; height:46px; font-size:1.3rem; }
+
+  /* Fix page hero */
+  .page-hero { padding:2rem 1rem; }
+  .page-hero h1 { font-size:1.8rem; }
+}
+
+@media(max-width:400px) {
+  .hero h1 { font-size:1.7rem; }
+  .products-grid { grid-template-columns:1fr; }
+  .hero-btns { flex-direction:column; }
+  .btn-primary, .btn-secondary { width:100%; text-align:center; }
+  .countdown { gap:0.25rem; }
+  .count-box { min-width:40px; padding:0.4rem 0.5rem; }
+  .count-box span { font-size:1rem; }
+  .count-sep { font-size:1rem; }
+  .info-grid { grid-template-columns:1fr 1fr; }
+}
+
+/* Fix detail page actions on mobile */
+@media(max-width:640px) {
+  .detail-actions { flex-direction:column; }
+  .btn-big, .btn-whatsapp-buy { width:100%; min-width:unset; }
+  .detail-gallery { flex-direction:column; }
+  .thumb-list { flex-direction:row; overflow-x:auto; }
+  .detail-name { font-size:1.3rem; }
+}
+
+/* Fix header on mobile */
+@media(max-width:640px) {
+  .header-inner { padding:0.7rem 1rem; gap:0.7rem; }
+  .logo-text { font-size:1.3rem; }
+  .search-bar { order:3; flex-basis:100%; }
+  .account-btn { display:none; }
+  .cart-btn { font-size:0.8rem; padding:0.45rem 0.8rem; }
+}
+
+/* Fix nav scrolling on mobile */
+.nav { 
+  overflow-x:auto;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  flex-wrap:nowrap;
+}
+.nav::-webkit-scrollbar { display:none; }
