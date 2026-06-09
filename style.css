@@ -2249,3 +2249,49 @@ section { padding: 4rem 0; }
   .review-form-btns { flex-direction: column; }
   .tracking-steps { padding: 0; }
 }
+
+/* ===== MOBILE FIXES — REVIEW (v3) ===== */
+
+/* Checkout form on mobile */
+@media(max-width:640px) {
+  .checkout-wrap { padding:0 0.8rem; margin:1rem auto 3rem; }
+  .checkout-card { padding:1rem; margin-bottom:1rem; }
+  .form-row { grid-template-columns:1fr; gap:0.8rem; }
+  .payment-methods { gap:0.5rem; }
+  .pay-method { padding:0.8rem 1rem; gap:0.8rem; }
+  .pm-icon { width:34px; height:34px; font-size:1.1rem; }
+  .pay-method strong { font-size:0.85rem; }
+  .pay-method p { font-size:0.72rem; }
+  .btn-place-order { font-size:0.95rem; padding:0.9rem; }
+  .co-secure { gap:0.5rem; font-size:0.68rem; }
+}
+
+/* Order tracking mobile */
+@media(max-width:640px) {
+  .track-step { gap:0.7rem; }
+  .track-step-icon { width:36px; height:36px; font-size:1rem; }
+  .track-step-line { margin-left:17px; }
+}
+
+/* Wishlist btn on detail page mobile */
+@media(max-width:640px) {
+  .wishlist-btn-large { min-width:100%; }
+  .detail-actions { flex-wrap:wrap; }
+}
+
+/* Review form mobile */
+@media(max-width:640px) {
+  .reviews-header { flex-direction:column; align-items:flex-start; }
+  .reviews-avg-score { font-size:2rem; }
+  .btn-write-review { width:100%; text-align:center; }
+}
+
+/* Fix wishlist heart btn clipping on small cards */
+.product-card { overflow:visible; }
+.card-img-wrap { overflow:hidden; border-radius:var(--radius) var(--radius) 0 0; }
+
+/* Fix coupon input on mobile */
+@media(max-width:480px) {
+  .coupon-row { flex-direction:column; }
+  .coupon-row input, .btn-apply-coupon { width:100%; }
+}

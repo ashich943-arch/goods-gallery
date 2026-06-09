@@ -142,6 +142,7 @@ function renderOffers(products) {
         </div>
       </div>`;
   }).join('');
+  if (typeof updateWishlistButtons === 'function') setTimeout(updateWishlistButtons, 50);
 }
 
 // Countdown

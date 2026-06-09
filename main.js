@@ -15,6 +15,7 @@ function renderFeatured() {
   const featuredIds = [1, 4, 8, 13, 17, 21, 24, 30, 35, 41, 46, 48];
   const featured = featuredIds.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
   grid.innerHTML = featured.map(buildCard).join("");
+  if (typeof updateWishlistButtons === 'function') updateWishlistButtons();
 }
 
 function renderDeals() {

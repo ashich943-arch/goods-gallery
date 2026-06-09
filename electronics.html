@@ -24,16 +24,10 @@
 <div class="cat-tabs-wrap">
   <div class="cat-tabs" id="cat-tabs">
     <button class="cat-tab active" onclick="filterCat('all', this)">All Electronics</button>
-    <button class="cat-tab" onclick="filterCat('mobile', this)">📱 Mobiles</button>
+    <button class="cat-tab" onclick="filterCat('audio', this)">🎧 Audio</button>
+    <button class="cat-tab" onclick="filterCat('mobile-tablet', this)">📱 Mobiles & Tablets</button>
     <button class="cat-tab" onclick="filterCat('laptop', this)">💻 Laptops</button>
-    <button class="cat-tab" onclick="filterCat('tablet', this)">📱 Tablets</button>
-    <button class="cat-tab" onclick="filterCat('headphone', this)">🎧 Headphones</button>
-    <button class="cat-tab" onclick="filterCat('earbuds', this)">🎵 Earbuds</button>
-    <button class="cat-tab" onclick="filterCat('earphone', this)">🎙️ Earphones</button>
-    <button class="cat-tab" onclick="filterCat('keyboard', this)">⌨️ Keyboards</button>
-    <button class="cat-tab" onclick="filterCat('hard', this)">🔌 Accessories</button>
-    <button class="cat-tab" onclick="filterCat('printer', this)">🖨️ Printers</button>
-    <button class="cat-tab" onclick="filterCat('pendrive', this)">💾 Storage</button>
+    <button class="cat-tab" onclick="filterCat('accessories', this)">⌨️ Accessories</button>
   </div>
 </div>
 
@@ -60,7 +54,7 @@ function filterCat(cat, btn) {
 
 function renderProducts() {
   const filtered = currentCat === 'all'
-    ? PRODUCTS
+    ? PRODUCTS.filter(p => ['audio','mobile-tablet','laptop','accessories'].includes(p.category))
     : PRODUCTS.filter(p => p.category === currentCat);
 
   const grid = document.getElementById('products-grid');
@@ -69,6 +63,7 @@ function renderProducts() {
   grid.innerHTML = filtered.length
     ? filtered.map(buildCard).join('')
     : '<div class="no-results">😔 No products in this category.</div>';
+  if (typeof updateWishlistButtons === 'function') updateWishlistButtons();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

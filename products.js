@@ -64,4 +64,5 @@ function filterProducts() {
   const count = document.getElementById("results-count");
   count.textContent = `Showing ${filtered.length} product${filtered.length!==1?"s":""}`;
   grid.innerHTML = filtered.length ? filtered.map(buildCard).join("") : `<div class="no-results">😔 No products found.</div>`;
+  if (typeof updateWishlistButtons === 'function') updateWishlistButtons();
 }

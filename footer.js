@@ -17,6 +17,8 @@ function injectFooter() {
         <a href="contact.html">Contact</a>
         <a href="faq.html">FAQs</a>
         <a href="products.html">Shop All</a>
+        <a href="wishlist.html">❤️ Wishlist</a>
+        <a href="order-tracking.html">📦 Track Order</a>
       </div>
       <div class="footer-links">
         <h4>Categories</h4>
