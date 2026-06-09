@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
           `).join("")}
         </div>
         <div class="main-img-wrap">
-          <img src="${imgs[activeImg]}" id="main-img" class="main-img" alt="${product.name}" />
+          <img src="${imgs[activeImg]}" id="main-img" class="main-img" alt="${product.name}" loading="eager"/>
         </div>
       </div>
       <div class="detail-info">

@@ -1,6 +1,12 @@
 // ============================================================
 //  GOODS GALLARRY – HOMEPAGE JS
 // ============================================================
+// ── Header scroll shadow ──
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.header');
+  if (header) header.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
 document.addEventListener("DOMContentLoaded", () => {
   renderFeatured();
   renderDeals();

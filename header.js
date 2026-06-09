@@ -67,6 +67,12 @@ function injectHeader(activePage) {
   document.body.insertAdjacentHTML('afterbegin', nav);
 }
 
+// Header scroll shadow
+window.addEventListener('scroll', () => {
+  const h = document.querySelector('.header');
+  if (h) h.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
 function globalSearch() {
   const q = document.getElementById('global-search')?.value?.trim();
   if (q) window.location.href = `products.html?search=${encodeURIComponent(q)}`;

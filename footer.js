@@ -31,6 +31,8 @@ function injectFooter() {
         <a href="products.html?cat=pet">Pet Supplies</a>
         <a href="products.html?cat=home">Home & Kitchen</a>
         <a href="products.html?cat=grocery">Grocery</a>
+        <a href="products.html?cat=stationery">Stationery</a>
+        <a href="products.html?cat=garden">Garden</a>
       </div>
       <div class="footer-links">
         <h4>Policies</h4>
