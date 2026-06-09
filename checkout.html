@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout – Goods Gallarry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script src="wishlist.js"></script>
+<script src="header.js"></script>
+<script>injectHeader('');</script>
+
+<section class="page-hero" style="padding:2rem;">
+  <h1>Checkout</h1>
+  <p>Complete your order — we'll confirm via WhatsApp</p>
+</section>
+
+<div class="checkout-wrap">
+
+  <!-- LEFT: Customer Form -->
+  <div class="checkout-form-side">
+
+    <!-- Step 1: Contact -->
+    <div class="checkout-card">
+      <div class="checkout-step-title">
+        <span class="step-num">1</span>
+        <h2>Contact Details</h2>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="co-name" placeholder="John Smith" required/>
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp *</label>
+          <input type="tel" id="co-phone" placeholder="+44 7XXX XXXXXX" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="co-email" placeholder="john@example.com" required/>
+      </div>
+    </div>
+
+    <!-- Step 2: Delivery Address -->
+    <div class="checkout-card">
+      <div class="checkout-step-title">
+        <span class="step-num">2</span>
+        <h2>Delivery Address</h2>
+      </div>
+      <div class="form-group">
+        <label>Address Line 1 *</label>
+        <input type="text" id="co-addr1" placeholder="House number and street name" required/>
+      </div>
+      <div class="form-group">
+        <label>Address Line 2</label>
+        <input type="text" id="co-addr2" placeholder="Apartment, flat, etc. (optional)"/>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>City *</label>
+          <input type="text" id="co-city" placeholder="London" required/>
+        </div>
+        <div class="form-group">
+          <label>Postcode *</label>
+          <input type="text" id="co-postcode" placeholder="SW1A 1AA" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Country</label>
+        <select id="co-country">
+          <option value="United Kingdom" selected>🇬🇧 United Kingdom</option>
+          <option value="England">England</option>
+          <option value="Scotland">Scotland</option>
+          <option value="Wales">Wales</option>
+          <option value="Northern Ireland">Northern Ireland</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Delivery Notes (optional)</label>
+        <textarea id="co-notes" rows="2" placeholder="e.g. Leave at door, ring bell, etc."></textarea>
+      </div>
+    </div>
+
+    <!-- Step 3: Payment Method -->
+    <div class="checkout-card">
+      <div class="checkout-step-title">
+        <span class="step-num">3</span>
+        <h2>Payment Method</h2>
+      </div>
+      <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:1rem;">Select how you'd like to pay — our team will send payment details via WhatsApp.</p>
+      <div class="payment-methods">
+        <label class="pay-method active" id="pm-whatsapp">
+          <input type="radio" name="payment" value="WhatsApp/Bank Transfer" checked onchange="selectPayment(this)"/>
+          <span class="pm-icon">💬</span>
+          <div>
+            <strong>Bank Transfer</strong>
+            <p>Pay via bank transfer after order confirmation</p>
+          </div>
+        </label>
+        <label class="pay-method" id="pm-paypal">
+          <input type="radio" name="payment" value="PayPal" onchange="selectPayment(this)"/>
+          <span class="pm-icon paypal-icon">P</span>
+          <div>
+            <strong>PayPal</strong>
+            <p>Pay securely via PayPal</p>
+          </div>
+        </label>
+        <label class="pay-method" id="pm-card">
+          <input type="radio" name="payment" value="Credit/Debit Card" onchange="selectPayment(this)"/>
+          <span class="pm-icon">💳</span>
+          <div>
+            <strong>Credit / Debit Card</strong>
+            <p>Visa, Mastercard, Amex accepted</p>
+          </div>
+        </label>
+        <label class="pay-method" id="pm-klarna">
+          <input type="radio" name="payment" value="Klarna" onchange="selectPayment(this)"/>
+          <span class="pm-icon klarna-icon">K</span>
+          <div>
+            <strong>Klarna</strong>
+            <p>Buy now, pay later</p>
+          </div>
+        </label>
+        <label class="pay-method" id="pm-cod">
+          <input type="radio" name="payment" value="Cash on Delivery" onchange="selectPayment(this)"/>
+          <span class="pm-icon">💵</span>
+          <div>
+            <strong>Cash on Delivery</strong>
+            <p>Pay when your order arrives</p>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Coupon Code -->
+    <div class="checkout-card">
+      <div class="checkout-step-title">
+        <span class="step-num">4</span>
+        <h2>Discount Code</h2>
+      </div>
+      <div class="coupon-row">
+        <input type="text" id="co-coupon" placeholder="Enter coupon code (e.g. SAVE10)" style="flex:1"/>
+        <button class="btn-apply-coupon" onclick="applyCoupon()">Apply</button>
+      </div>
+      <div id="coupon-msg" style="font-size:0.82rem;margin-top:0.5rem;display:none;"></div>
+    </div>
+
+    <!-- Place Order Button -->
+    <button class="btn-place-order" onclick="placeOrder()">
+      ✅ Place Order via WhatsApp
+    </button>
+    <p class="order-note">By placing your order, you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>. Our team will contact you within 1 hour to confirm.</p>
+  </div>
+
+  <!-- RIGHT: Order Summary -->
+  <div class="checkout-summary-side">
+    <div class="checkout-card sticky-summary">
+      <h2 style="margin-bottom:1.2rem;">Order Summary</h2>
+      <div id="co-items" class="co-items-list"></div>
+
+      <div class="co-totals">
+        <div class="co-total-row">
+          <span>Subtotal</span>
+          <span id="co-subtotal">£0.00</span>
+        </div>
+        <div class="co-total-row">
+          <span>Delivery</span>
+          <span id="co-delivery" class="text-green">FREE</span>
+        </div>
+        <div class="co-total-row total-final">
+          <span>Total</span>
+          <span id="co-total">£0.00</span>
+        </div>
+      </div>
+
+      <div class="co-secure">
+        <span>🔒 Secure & Trusted</span>
+        <span>🚚 Fast UK Delivery</span>
+        <span>↩️ 7-Day Returns</span>
+      </div>
+
+      <!-- Payment icons -->
+      <div class="co-payment-icons">
+        <span class="pay-icon paypal" style="font-size:0.65rem;height:28px;padding:0 10px;">PayPal</span>
+        <span class="pay-icon visa" style="font-size:0.8rem;height:28px;padding:0 10px;">VISA</span>
+        <span class="pay-icon mastercard" style="height:28px;padding:0 8px;"><span class="mc-left" style="width:18px;height:18px;"></span><span class="mc-right" style="width:18px;height:18px;"></span></span>
+        <span class="pay-icon amex" style="font-size:0.65rem;height:28px;padding:0 8px;">AMEX</span>
+        <span class="pay-icon klarna" style="font-size:0.75rem;height:28px;padding:0 10px;">klarna</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="footer.js"></script>
+<script>injectFooter();</script>
+<script src="chatbot.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  renderOrderSummary();
+  if (cart.length === 0) {
+    // Empty cart - redirect
+    document.querySelector('.checkout-wrap').innerHTML = `
+      <div style="text-align:center;padding:4rem;max-width:500px;margin:0 auto;">
+        <div style="font-size:4rem;margin-bottom:1rem;">🛒</div>
+        <h2 style="margin-bottom:1rem;">Your cart is empty!</h2>
+        <p style="color:var(--text-muted);margin-bottom:2rem;">Add some products first before checking out.</p>
+        <a href="products.html" class="btn-primary">Browse Products</a>
+      </div>`;
+  }
+});
+
+function renderOrderSummary() {
+  const container = document.getElementById('co-items');
+  const subtotalEl = document.getElementById('co-subtotal');
+  const totalEl = document.getElementById('co-total');
+  const deliveryEl = document.getElementById('co-delivery');
+  if (!container) return;
+
+  const subtotal = cart.reduce((s,i) => s + i.qty * i.price, 0);
+  const delivery = subtotal >= 50 ? 0 : 2.99;
+  const total = subtotal + delivery;
+
+  let discount = 0;
+  if (appliedCoupon) {
+    if (appliedCoupon.type === 'percent') discount = subtotal * appliedCoupon.value / 100;
+    else discount = appliedCoupon.value;
+    discount = Math.min(discount, subtotal);
+  }
+  const totalAfterDiscount = subtotal - discount + delivery;
+
+  deliveryEl.textContent = delivery === 0 ? 'FREE' : '£' + delivery.toFixed(2);
+  subtotalEl.textContent = '£' + subtotal.toFixed(2);
+  totalEl.textContent = '£' + totalAfterDiscount.toFixed(2);
+
+  // Show discount row
+  let discRow = document.getElementById('co-discount-row');
+  if (discount > 0) {
+    if (!discRow) {
+      const row = document.createElement('div');
+      row.id = 'co-discount-row';
+      row.className = 'co-total-row';
+      row.style.color = '#22c55e';
+      document.querySelector('.co-totals').insertBefore(row, document.querySelector('.co-total-row.total-final'));
+      discRow = row;
+    }
+    discRow.innerHTML = `<span>Discount (${appliedCoupon.code})</span><span>-£${discount.toFixed(2)}</span>`;
+  } else if (discRow) {
+    discRow.remove();
+  }
+
+  container.innerHTML = cart.map(item => `
+    <div class="co-item">
+      <img src="${item.image}" alt="${item.name}"/>
+      <div class="co-item-info">
+        <p class="co-item-name">${item.name}</p>
+        <p class="co-item-qty">Qty: ${item.qty}</p>
+      </div>
+      <span class="co-item-price">£${(item.price * item.qty).toFixed(2)}</span>
+    </div>
+  `).join('') || '<p style="color:var(--text-muted)">No items in cart</p>';
+}
+
+function selectPayment(el) {
+  document.querySelectorAll('.pay-method').forEach(m => m.classList.remove('active'));
+  el.closest('.pay-method').classList.add('active');
+}
+
+// Active coupons
+const COUPONS = {
+  'SAVE10':  { type:'percent', value:10, label:'10% off' },
+  'SAVE5':   { type:'fixed',   value:5,  label:'£5 off' },
+  'WELCOME': { type:'percent', value:15, label:'15% off for new customers' },
+  'GG20':    { type:'percent', value:20, label:'20% off' },
+};
+let appliedCoupon = null;
+
+function applyCoupon() {
+  const code = document.getElementById('co-coupon').value.trim().toUpperCase();
+  const msg  = document.getElementById('coupon-msg');
+  if (!code) { msg.style.display='block'; msg.style.color='#ef4444'; msg.textContent='Please enter a coupon code.'; return; }
+  if (COUPONS[code]) {
+    appliedCoupon = { code, ...COUPONS[code] };
+    msg.style.display='block'; msg.style.color='#22c55e';
+    msg.textContent = `✅ Coupon "${code}" applied — ${COUPONS[code].label}!`;
+    renderOrderSummary();
+  } else {
+    appliedCoupon = null;
+    msg.style.display='block'; msg.style.color='#ef4444';
+    msg.textContent = '❌ Invalid coupon code. Please try again.';
+  }
+}
+
+function placeOrder() {
+  // Validate
+  const name     = document.getElementById('co-name').value.trim();
+  const phone    = document.getElementById('co-phone').value.trim();
+  const email    = document.getElementById('co-email').value.trim();
+  const addr1    = document.getElementById('co-addr1').value.trim();
+  const city     = document.getElementById('co-city').value.trim();
+  const postcode = document.getElementById('co-postcode').value.trim();
+  const addr2    = document.getElementById('co-addr2').value.trim();
+  const notes    = document.getElementById('co-notes').value.trim();
+  const country  = document.getElementById('co-country').value;
+  const payment  = document.querySelector('input[name="payment"]:checked').value;
+
+  if (!name || !phone || !email || !addr1 || !city || !postcode) {
+    alert('Please fill in all required fields (*)');
+    return;
+  }
+
+  const subtotal = cart.reduce((s,i) => s + i.qty * i.price, 0);
+  const delivery = subtotal >= 50 ? 0 : 2.99;
+  const total    = subtotal + delivery;
+
+  // Build WhatsApp message
+  let msg = `🛍️ *NEW ORDER – Goods Gallarry*\n\n`;
+  msg += `👤 *Customer Details:*\n`;
+  msg += `Name: ${name}\n`;
+  msg += `Phone: ${phone}\n`;
+  msg += `Email: ${email}\n\n`;
+  msg += `📍 *Delivery Address:*\n`;
+  msg += `${addr1}${addr2 ? ', ' + addr2 : ''}\n`;
+  msg += `${city}, ${postcode}\n`;
+  msg += `${country}\n`;
+  if (notes) msg += `Note: ${notes}\n`;
+  msg += `\n🛒 *Order Items:*\n`;
+  cart.forEach(item => {
+    msg += `• ${item.name} x${item.qty} = £${(item.price * item.qty).toFixed(2)}\n`;
+  });
+  msg += `\n💰 *Subtotal: £${subtotal.toFixed(2)}*\n`;
+  msg += `🚚 *Delivery: ${delivery === 0 ? 'FREE' : '£' + delivery.toFixed(2)}*\n`;
+  msg += `✅ *TOTAL: £${total.toFixed(2)}*\n\n`;
+  if (appliedCoupon) {
+    const disc = appliedCoupon.type === 'percent'
+      ? subtotal * appliedCoupon.value / 100
+      : appliedCoupon.value;
+    msg += `🏷️ *Coupon:* ${appliedCoupon.code} (-£${Math.min(disc,subtotal).toFixed(2)})\n`;
+  }
+  msg += `💳 *Payment Method:* ${payment}\n\n`;
+  msg += `Please confirm my order. Thank you! 🙏`;
+
+  window.open(`https://wa.me/447508234409?text=${encodeURIComponent(msg)}`, '_blank');
+
+  // Show success
+  document.querySelector('.checkout-wrap').innerHTML = `
+    <div class="order-success">
+      <div class="success-icon">✅</div>
+      <h2>Order Sent!</h2>
+      <p>Your order has been sent to our WhatsApp. We'll confirm within <strong>1 hour</strong>.</p>
+      <div class="success-details">
+        <p>📞 <strong>${phone}</strong></p>
+        <p>📍 <strong>${addr1}, ${city}, ${postcode}</strong></p>
+        <p>💳 <strong>${payment}</strong></p>
+      </div>
+      <a href="products.html" class="btn-primary" style="margin-top:1.5rem;display:inline-block;">Continue Shopping</a>
+    </div>`;
+
+  // Clear cart
+  clearCart();
+}
+</script>
+</body>
+</html>

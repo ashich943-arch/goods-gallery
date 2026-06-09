@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
           <button class="btn-primary btn-big" onclick="detailAddCart(${product.id})">🛒 Add to Cart</button>
           <button class="btn-whatsapp-buy" onclick="buyNowWhatsApp(${product.id})">💬 Buy via WhatsApp</button>
+          <button class="wishlist-btn-large" data-wishlist-id="${product.id}" onclick="toggleWishlist(${product.id})" title="Add to Wishlist">🤍 Wishlist</button>
         </div>
         <div class="detail-badges">
           <span>🚚 Free Delivery on orders above £50</span>
@@ -109,6 +110,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("cart-sidebar").classList.add("open");
     document.getElementById("cart-overlay").classList.add("open");
   };
+
+  // Reviews Section
+  const reviewsWrap = document.createElement('section');
+  reviewsWrap.className = 'reviews-wrap';
+  reviewsWrap.style.cssText = 'max-width:1280px;margin:0 auto 2rem;padding:0 2rem;';
+  reviewsWrap.innerHTML = `<div id="reviews-container-${product.id}"></div>`;
+  document.querySelector('.related-section').before(reviewsWrap);
+  if (typeof renderReviews === 'function') renderReviews(product.id, `reviews-container-${product.id}`);
 
   // Related products
   const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0,4);

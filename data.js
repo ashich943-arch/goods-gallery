@@ -18,7 +18,7 @@ const PRODUCTS = [
     colors: ["#111827","#b45309","#1d4ed8"],
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80",
     images: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80"],
-    badge: "Save £20", rating: 4.8, reviews: 341,
+    badge: "Save £20", rating: 4.8, reviews: 341, stock: 3,
     description: "Industry-leading active noise cancellation with 30-hour battery life.",
     features: ["Active Noise Cancel","30hr Battery","Hi-Res Audio","Foldable Design","Multi-device"],
   },
@@ -59,7 +59,7 @@ const PRODUCTS = [
     colors: ["#6b21a8","#1d4ed8","#111827","#d1d5db"],
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80",
     images: ["https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=80"],
-    badge: "Save £100", rating: 4.8, reviews: 520,
+    badge: "Save £100", rating: 4.8, reviews: 520, stock: 2,
     description: "Flagship 5G smartphone with 200MP camera, Snapdragon 8 Gen 3.",
     features: ["200MP Camera","Snapdragon 8 Gen 3","5G Ready","5000mAh Battery","Fast Charge 65W"],
   },
@@ -113,7 +113,7 @@ const PRODUCTS = [
     colors: ["#c0c0c0","#b8860b","#111827"],
     image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&q=80",
     images: ["https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80"],
-    badge: "Save £150", rating: 4.7, reviews: 189,
+    badge: "Save £150", rating: 4.7, reviews: 189, stock: 4,
     description: "Slim and powerful 14-inch laptop with i7 processor, 16GB RAM, 512GB SSD.",
     features: ["Intel i7 12th Gen","16GB DDR5 RAM","512GB NVMe SSD","14\" FHD IPS","Backlit KB"],
   },
@@ -700,13 +700,19 @@ function starHTML(rating) {
 function buildCard(p) {
   const isNew = p.badge === "New";
   const badgeClass = isNew ? "badge badge-new" : "badge";
+  const stockBadge = p.stock !== undefined && p.stock <= 5 && p.stock > 0
+    ? `<span class="stock-badge">🔥 Only ${p.stock} left!</span>` : '';
+  const outOfStock = p.stock === 0;
   return `
     <div class="product-card" data-id="${p.id}">
       ${p.badge ? `<span class="${badgeClass}">${p.badge}</span>` : ""}
+      ${stockBadge}
+      <button class="wishlist-btn" data-wishlist-id="${p.id}" onclick="event.preventDefault();toggleWishlist(${p.id})" title="Add to Wishlist">🤍</button>
       <a href="detail.html?id=${p.id}">
         <div class="card-img-wrap">
           <img src="${p.image}" alt="${p.name}" loading="lazy"/>
           <div class="quick-look">Quick Look</div>
+          ${outOfStock ? '<div class="out-of-stock-overlay">Out of Stock</div>' : ''}
         </div>
       </a>
       <div class="card-body">
@@ -717,7 +723,9 @@ function buildCard(p) {
           <span class="price-old">${formatPrice(p.oldPrice)}</span>
         </div>
         ${p.colors && p.colors.length ? `<div class="color-dots">${p.colors.map(c=>`<span class="dot" style="background:${c}"></span>`).join("")}</div>` : ""}
-        <button class="btn-add-cart" onclick="addToCart(${p.id})">🛒 Add to Cart</button>
+        <button class="btn-add-cart" onclick="addToCart(${p.id})" ${outOfStock ? 'disabled style="opacity:0.5;cursor:not-allowed"' : ''}>
+          ${outOfStock ? '❌ Out of Stock' : '🛒 Add to Cart'}
+        </button>
       </div>
     </div>
   `;

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Your Order – Goods Gallarry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script src="wishlist.js"></script>
+<script src="header.js"></script>
+<script>injectHeader('');</script>
+
+<section class="page-hero">
+  <h1>📦 Track Your Order</h1>
+  <p>Enter your order details to see the latest status</p>
+</section>
+
+<div class="info-page">
+  <div class="checkout-card">
+    <h2>Find Your Order</h2>
+    <p style="color:var(--text-muted);margin-bottom:1.5rem;">Enter your phone number or order ID that was sent to you via WhatsApp.</p>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Phone Number / WhatsApp</label>
+        <input type="tel" id="track-phone" placeholder="+44 7XXX XXXXXX"/>
+      </div>
+      <div class="form-group">
+        <label>Order ID (optional)</label>
+        <input type="text" id="track-id" placeholder="e.g. GG-12345"/>
+      </div>
+    </div>
+    <button class="btn-primary" style="width:100%;margin-top:0.5rem;" onclick="trackOrder()">🔍 Track Order</button>
+  </div>
+
+  <!-- Result -->
+  <div id="track-result" style="display:none"></div>
+
+  <!-- WhatsApp Track -->
+  <div class="info-card" style="text-align:center;">
+    <h2>📱 Track via WhatsApp</h2>
+    <p style="color:var(--text-muted);margin-bottom:1.5rem;">The fastest way to track your order is to message us directly on WhatsApp with your order details.</p>
+    <a href="https://wa.me/447508234409?text=Hi!%20I%20want%20to%20track%20my%20order.%20My%20phone%20number%20is%3A%20" 
+       target="_blank" class="btn-primary" style="display:inline-block;">
+      💬 Track on WhatsApp
+    </a>
+  </div>
+
+  <!-- How it works -->
+  <div class="info-card">
+    <h2>How Order Tracking Works</h2>
+    <div class="tracking-steps">
+      <div class="track-step">
+        <div class="track-step-icon">🛒</div>
+        <div>
+          <strong>Order Placed</strong>
+          <p>You placed your order and we received it via WhatsApp</p>
+        </div>
+      </div>
+      <div class="track-step-line"></div>
+      <div class="track-step">
+        <div class="track-step-icon">✅</div>
+        <div>
+          <strong>Order Confirmed</strong>
+          <p>Our team confirms your order within 1 hour and sends payment details</p>
+        </div>
+      </div>
+      <div class="track-step-line"></div>
+      <div class="track-step">
+        <div class="track-step-icon">📦</div>
+        <div>
+          <strong>Packed & Dispatched</strong>
+          <p>Your order is packed and handed to the courier (1-2 business days)</p>
+        </div>
+      </div>
+      <div class="track-step-line"></div>
+      <div class="track-step">
+        <div class="track-step-icon">🚚</div>
+        <div>
+          <strong>Out for Delivery</strong>
+          <p>Your parcel is on its way — tracking number sent via WhatsApp</p>
+        </div>
+      </div>
+      <div class="track-step-line"></div>
+      <div class="track-step">
+        <div class="track-step-icon">🏠</div>
+        <div>
+          <strong>Delivered</strong>
+          <p>Your order has arrived — enjoy your purchase!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-card cta-card">
+    <h2>Need Help?</h2>
+    <p>If you have any issues with your order, contact us immediately.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;">
+      <a href="https://wa.me/447508234409" target="_blank" class="btn-primary">💬 WhatsApp: +44 7508 234409</a>
+      <a href="contact.html" class="btn-secondary">Contact Us</a>
+    </div>
+  </div>
+</div>
+
+<a href="https://wa.me/447508234409" target="_blank" class="whatsapp-float">💬</a>
+<script src="footer.js"></script>
+<script>injectFooter();</script>
+<script src="chatbot.js"></script>
+<script>
+function trackOrder() {
+  const phone = document.getElementById('track-phone').value.trim();
+  const orderId = document.getElementById('track-id').value.trim();
+  if (!phone && !orderId) { alert('Please enter your phone number or order ID.'); return; }
+
+  const result = document.getElementById('track-result');
+  result.style.display = 'block';
+  result.innerHTML = `
+    <div class="info-card">
+      <div style="text-align:center;padding:1rem;">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">📱</div>
+        <h3 style="margin-bottom:0.8rem;">Check WhatsApp for Updates</h3>
+        <p style="color:var(--text-muted);margin-bottom:1.2rem;">
+          We send all order updates via WhatsApp. Please check your WhatsApp messages from <strong>+44 7508 234409</strong> for the latest status of your order.
+        </p>
+        <a href="https://wa.me/447508234409?text=Hi!%20I%20want%20to%20track%20my%20order.%20My%20details%3A%20${encodeURIComponent((phone || '') + ' ' + (orderId || ''))}" 
+           target="_blank" class="btn-primary">
+          💬 Message Us on WhatsApp
+        </a>
+      </div>
+    </div>`;
+  result.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

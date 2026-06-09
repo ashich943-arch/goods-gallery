@@ -20,6 +20,9 @@ function injectHeader(activePage) {
       </div>
       <div class="header-actions">
         <a href="javascript:void(0)" class="icon-btn account-btn">👤 Account</a>
+      <a href="wishlist.html" class="icon-btn wishlist-nav-btn" title="My Wishlist">
+        🤍 <span class="wishlist-count" style="display:none;background:#ef4444;color:white;border-radius:50%;width:18px;height:18px;font-size:0.7rem;font-weight:700;align-items:center;justify-content:center;margin-left:2px;">0</span>
+      </a>
         <a href="javascript:void(0)" class="icon-btn cart-btn" onclick="toggleCart()">
           🛒 Cart <span class="cart-count" id="cart-count">0</span>
         </a>
@@ -41,6 +44,7 @@ function injectHeader(activePage) {
       <span class="nav-divider">|</span>
       <a href="faq.html" class="${activePage==='faq'?'active':''}">FAQs</a>
       <a href="about.html" class="${activePage==='about'?'active':''}">About Us</a>
+      <a href="order-tracking.html" class="${activePage==='tracking'?'active':''}">Track Order</a>
     </nav>
   </header>
   <!-- CART SIDEBAR -->
@@ -55,7 +59,8 @@ function injectHeader(activePage) {
     </div>
     <div class="cart-footer" id="cart-footer" style="display:none">
       <div class="cart-total">Total: <span id="cart-total">£0.00</span></div>
-      <button class="btn-checkout" onclick="orderOnWhatsApp(cart, cart.reduce((s,i)=>s+i.qty*i.price,0))">🛒 Order via WhatsApp</button>
+      <a href="checkout.html" class="btn-checkout" style="display:block;text-align:center;text-decoration:none;">✅ Proceed to Checkout</a>
+      <button class="btn-whatsapp-order" onclick="orderOnWhatsApp(cart, cart.reduce((s,i)=>s+i.qty*i.price,0))">💬 Quick Order via WhatsApp</button>
       <button class="btn-clear" onclick="clearCart()">Clear Cart</button>
     </div>
   </div>`;
