@@ -8,7 +8,7 @@ const SLIDES = [
     sub:     "Electronics, Health, Home, Beauty & More — All in One Place",
     btn1:    { text: "Shop All →", link: "products.html" },
     btn2:    { text: "View Deals →", link: "offers.html" },
-    image:   "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=900&q=90",
+    image:   "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=85",
     // Shopping bags / general store
   },
   {
@@ -17,7 +17,7 @@ const SLIDES = [
     sub:     "Phones, Laptops, Headphones, Tablets — Top Brands, Best Prices",
     btn1:    { text: "Shop Electronics →", link: "electronics.html" },
     btn2:    { text: "View Offers →", link: "offers.html" },
-    image:   "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=900&q=90",
+    image:   "https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=1200&q=85",
     // Electronics flat lay
   },
   {
@@ -26,7 +26,7 @@ const SLIDES = [
     sub:     "Premium Quality Health Products for Your Daily Wellbeing",
     btn1:    { text: "Shop Vitamins →", link: "products.html?cat=vitamins" },
     btn2:    { text: "Shop Sports →", link: "products.html?cat=sports" },
-    image:   "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=900&q=90",
+    image:   "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=85",
     // Health supplements
   },
   {
@@ -35,7 +35,7 @@ const SLIDES = [
     sub:     "Chanel, Mugler & More — Discover Your Perfect Scent",
     btn1:    { text: "Shop Perfumes →", link: "products.html?cat=perfume" },
     btn2:    { text: "View Collection →", link: "products.html" },
-    image:   "https://images.unsplash.com/photo-1541643600914-78b084683702?w=900&q=90",
+    image:   "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=1200&q=85",
     // Perfume bottles
   },
   {
@@ -44,7 +44,7 @@ const SLIDES = [
     sub:     "Kitchen Essentials, Storage Solutions & More for Modern Living",
     btn1:    { text: "Shop Home →", link: "products.html?cat=home" },
     btn2:    { text: "Shop Grocery →", link: "products.html?cat=grocery" },
-    image:   "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=90",
+    image:   "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1200&q=85",
     // Modern kitchen
   },
   {
@@ -53,7 +53,7 @@ const SLIDES = [
     sub:     "Trusted Brands — FRONTLINE, NutriPaw & More for Your Furry Friends",
     btn1:    { text: "Shop Pet Supplies →", link: "products.html?cat=pet" },
     btn2:    { text: "View All →", link: "products.html" },
-    image:   "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=900&q=90",
+    image:   "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=1200&q=85",
     // Happy dog
   },
 ];
