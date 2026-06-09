@@ -55,7 +55,7 @@ function injectHeader(activePage) {
     </div>
     <div class="cart-footer" id="cart-footer" style="display:none">
       <div class="cart-total">Total: <span id="cart-total">£0.00</span></div>
-      <button class="btn-checkout">Proceed to Checkout</button>
+      <button class="btn-checkout" onclick="orderOnWhatsApp(cart, cart.reduce((s,i)=>s+i.qty*i.price,0))">🛒 Order via WhatsApp</button>
       <button class="btn-clear" onclick="clearCart()">Clear Cart</button>
     </div>
   </div>`;

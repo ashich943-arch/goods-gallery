@@ -1,7 +1,7 @@
 // ============================================================
 //  GOODS GALLERY – AI CHATBOT
 // ============================================================
-const CHATBOT_WA = "923076844382";
+const CHATBOT_WA = "447508234409";
 
 const BOT_KNOWLEDGE = {
   greetings: ["hi","hello","hey","salam","assalam","helo","good morning","good evening"],
@@ -35,12 +35,12 @@ const BOT_KNOWLEDGE = {
     payment: "We accept all major payment methods including Credit/Debit cards, PayPal, and Bank Transfer. You can also order via WhatsApp and pay on delivery.",
     warranty: "All our electronics come with a 1-year manufacturer warranty. Accessories have a 3-month warranty. We only sell 100% genuine products.",
     order: "To place an order, simply add items to your cart and click 'Order via WhatsApp'. Our team will confirm your order within 1 hour!",
-    contact: "You can reach us on WhatsApp: +923076844382 or email: support@goodsgallery.co.uk. We're available 7 days a week, 9am-9pm.",
-    location: "Goods Gallery is a UK-based electronics store. We deliver across the entire United Kingdom.",
+    contact: "You can reach us on WhatsApp: +447508234409 or email: support@goodsgallarry.co.uk. We're available 7 days a week, 9am-9pm.",
+    location: "Goods Gallarry is a UK-based electronics store. We deliver across the entire United Kingdom.",
     cheapest: "Our cheapest product is the 128GB USB Flash Drive at only £9.99! We have products starting from £9.99 up to £649.99.",
     expensive: "Our premium product is the UltraBook Pro 14-inch Laptop at £649.99 (was £799.99). Great value for a professional laptop!",
     discount: "We have amazing deals! Check our Featured Collection for discounts up to £150 off. Free shipping on orders over £50!",
-    track: "Once your order is dispatched, you'll receive a tracking number via WhatsApp. Contact us at +923076844382 for order updates.",
+    track: "Once your order is dispatched, you'll receive a tracking number via WhatsApp. Contact us at +447508234409 for order updates.",
   }
 };
 
@@ -49,12 +49,12 @@ function getBotResponse(msg) {
 
   // Greetings
   if (BOT_KNOWLEDGE.greetings.some(g => m.includes(g))) {
-    return "Hello! 👋 Welcome to **Goods Gallery**! I'm your shopping assistant. How can I help you today?\n\nYou can ask me about:\n• 📱 Products & prices\n• 🚚 Shipping & delivery\n• ↩️ Returns & warranty\n• 💬 How to order";
+    return "Hello! 👋 Welcome to **Goods Gallarry**! I'm your shopping assistant. How can I help you today?\n\nYou can ask me about:\n• 📱 Products & prices\n• 🚚 Shipping & delivery\n• ↩️ Returns & warranty\n• 💬 How to order";
   }
 
   // Farewells
   if (BOT_KNOWLEDGE.farewells.some(f => m.includes(f))) {
-    return "Thank you for visiting Goods Gallery! 😊 Feel free to come back anytime. Happy shopping! 🛍️";
+    return "Thank you for visiting Goods Gallarry! 😊 Feel free to come back anytime. Happy shopping! 🛍️";
   }
 
   // Product queries
@@ -189,7 +189,7 @@ function injectChatbot() {
       <div class="chatbot-head-info">
         <div class="chatbot-avatar">GG</div>
         <div>
-          <strong>Goods Gallery</strong>
+          <strong>Goods Gallarry</strong>
           <span class="chatbot-status">🟢 Online</span>
         </div>
       </div>
@@ -197,7 +197,7 @@ function injectChatbot() {
     </div>
     <div class="chatbot-messages" id="chatbot-messages">
       <div class="bot-msg">
-        <div class="msg-bubble">Hello! 👋 Welcome to <strong>Goods Gallery</strong>!<br/>I can help you with products, prices, orders & more. What are you looking for?</div>
+        <div class="msg-bubble">Hello! 👋 Welcome to <strong>Goods Gallarry</strong>!<br/>I can help you with products, prices, orders & more. What are you looking for?</div>
         <div class="msg-time">Just now</div>
       </div>
       <div class="chatbot-suggestions">
@@ -212,7 +212,7 @@ function injectChatbot() {
       <button onclick="sendChat()" class="chatbot-send">➤</button>
     </div>
     <div class="chatbot-footer">
-      <a href="https://wa.me/${CHATBOT_WA}" target="_blank">💬 Chat on WhatsApp instead</a>
+      <a href="https://wa.me/447508234409" target="_blank">💬 Chat on WhatsApp instead</a>
     </div>
   </div>`;
 

@@ -1636,3 +1636,64 @@ section { padding: 4rem 0; }
   flex-wrap:nowrap;
 }
 .nav::-webkit-scrollbar { display:none; }
+
+/* ===== NAV — MANY ITEMS MOBILE FIX ===== */
+@media(max-width:900px) {
+  .nav {
+    padding: 0 1rem 0.5rem;
+    gap: 0.8rem;
+    font-size: 0.82rem;
+  }
+}
+@media(max-width:640px) {
+  .nav {
+    padding: 0 0.8rem 0.5rem;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+  }
+  .nav-divider { display: none; }
+  /* Collection grid - 2 columns on small screens */
+  .collection-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+  /* Fix deal product card on mobile */
+  .deal-products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .deal-product-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .deal-product-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  /* Promo banners on mobile */
+  .promo-banners {
+    grid-template-columns: 1fr;
+  }
+  /* Featured products 2 col */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+}
+@media(max-width:400px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .deal-products { grid-template-columns: 1fr; }
+  .collection-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== PROMO CARD LOCAL IMAGE FIX ===== */
+.promo-card img {
+  object-position: center;
+}
+
+/* ===== COLLECTION CARD IMAGE — COVER FIX ===== */
+.collection-card img {
+  object-fit: cover;
+  object-position: center;
+  background: var(--bg3);
+}
