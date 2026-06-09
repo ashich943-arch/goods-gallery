@@ -38,6 +38,18 @@ function injectFooter() {
         <a href="terms.html">Terms of Service</a>
       </div>
     </div>
+    <div class="footer-payments">
+      <p class="payment-title">Secure Payments Accepted</p>
+      <div class="payment-icons">
+        <span class="pay-icon paypal">PayPal</span>
+        <span class="pay-icon visa">VISA</span>
+        <span class="pay-icon mastercard"><span class="mc-left"></span><span class="mc-right"></span></span>
+        <span class="pay-icon amex">AMEX</span>
+        <span class="pay-icon applepay"> Pay</span>
+        <span class="pay-icon googlepay">G Pay</span>
+        <span class="pay-icon klarna">klarna</span>
+      </div>
+    </div>
     <div class="footer-bottom">
       <p>© 2025 Goods Gallarry UK. All rights reserved.</p>
     </div>
