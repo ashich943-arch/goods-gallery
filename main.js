@@ -1,5 +1,5 @@
 // ============================================================
-//  CELLO STORE – HOMEPAGE JS
+//  GOODS GALLARRY – HOMEPAGE JS
 // ============================================================
 document.addEventListener("DOMContentLoaded", () => {
   renderFeatured();
@@ -10,14 +10,21 @@ document.addEventListener("DOMContentLoaded", () => {
 function renderFeatured() {
   const grid = document.getElementById("featured-products");
   if (!grid) return;
-  const featured = PRODUCTS.slice(0, 6);
+
+  // Mix of electronics + new categories
+  const featuredIds = [1, 4, 8, 13, 17, 21, 24, 30, 35, 41, 46, 48];
+  const featured = featuredIds.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
   grid.innerHTML = featured.map(buildCard).join("");
 }
 
 function renderDeals() {
   const container = document.getElementById("deal-products");
   if (!container) return;
-  const deals = PRODUCTS.slice(0, 4);
+
+  // Deal products: Headphones, Laptop, Vitamins, Sports Protein
+  const dealIds = [1, 8, 13, 17];
+  const deals = dealIds.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+
   container.innerHTML = deals.map(p => `
     <div class="deal-product-card">
       <img src="${p.image}" alt="${p.name}" />
@@ -40,17 +47,12 @@ function startCountdown() {
   end.setHours(end.getHours() + 5);
 
   function tick() {
-    const now = new Date();
-    const diff = end - now;
+    const diff = end - new Date();
     if (diff <= 0) return;
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById("days").textContent = String(d).padStart(2,"0");
-    document.getElementById("hours").textContent = String(h).padStart(2,"0");
-    document.getElementById("minutes").textContent = String(m).padStart(2,"0");
-    document.getElementById("seconds").textContent = String(s).padStart(2,"0");
+    document.getElementById("days").textContent    = String(Math.floor(diff/86400000)).padStart(2,"0");
+    document.getElementById("hours").textContent   = String(Math.floor((diff%86400000)/3600000)).padStart(2,"0");
+    document.getElementById("minutes").textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,"0");
+    document.getElementById("seconds").textContent = String(Math.floor((diff%60000)/1000)).padStart(2,"0");
   }
   tick();
   setInterval(tick, 1000);
