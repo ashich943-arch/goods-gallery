@@ -13,10 +13,19 @@ document.addEventListener("DOMContentLoaded", () => {
 function buildCategoryFilters() {
   const cats = ["all", ...new Set(PRODUCTS.map(p => p.category))];
   const labels = {
-    all:"All Products", earbuds:"Earbuds", hard:"Hard Devices",
-    keyboard:"Keyboard", mobile:"Mobile", printer:"Printer",
-    earphone:"Earphone", headphone:"Headphones", laptop:"Laptop",
-    pendrive:"Pen Drive", tablet:"Tablet"
+    all:"All Products",
+    audio:"🎧 Audio",
+    "mobile-tablet":"📱 Mobiles & Tablets",
+    laptop:"💻 Laptops",
+    accessories:"⌨️ Accessories",
+    vitamins:"💊 Vitamins",
+    sports:"🏋️ Sports",
+    perfume:"🌸 Perfume",
+    pet:"🐾 Pet Supplies",
+    home:"🏠 Home & Kitchen",
+    grocery:"🛒 Grocery",
+    stationery:"📎 Stationery",
+    garden:"🌿 Garden"
   };
   const container = document.getElementById("category-filters");
   container.innerHTML = cats.map(c => `

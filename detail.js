@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.buyNowWhatsApp = function(pid) {
     const product = PRODUCTS.find(p => p.id === pid);
     if (!product) return;
-    const msg = "Hello Goods Gallery! 👋\n\nI want to order:\n• " + product.name + " x" + qty + " = " + formatPrice(product.price * qty) + "\n\nPlease confirm. Thank you!";
+    const msg = "Hello Goods Gallarry! 👋\n\nI want to order:\n• " + product.name + " x" + qty + " = " + formatPrice(product.price * qty) + "\n\nPlease confirm. Thank you!";
     window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg), "_blank");
   };
 
